@@ -1,0 +1,163 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Segoe UI", Tahoma, sans-serif;
+}
+
+body {
+  min-height: 100vh;
+  background: linear-gradient(180deg, #eef5ff, #e3efff);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+
+/* Card */
+.card {
+  background: #fff;
+  width: 420px;
+  padding: 32px;
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+  margin: auto 0;
+}
+#navbar-container {
+    width: 100%;
+    margin-bottom: auto;
+  }
+
+/* Titles */
+.card h1 {
+  text-align: center;
+  margin-bottom: 8px;
+}
+
+.subtitle {
+  text-align: center;
+  color: #6b7280;
+  margin-bottom: 24px;
+}
+
+/* Form */
+.form-group {
+  margin-bottom: 16px;
+}
+
+.form-group label {
+  display: block;
+  font-weight: 500;
+  margin-bottom: 6px;
+}
+
+.input-box {
+  display: flex;
+  align-items: center;
+  background: #f9fafb;
+  border-radius: 12px;
+  border: 1.5px solid #e5e7eb;
+  padding: 12px;
+  transition: 0.3s ease;
+}
+
+.input-box input,
+.input-box select {
+  border: none;
+  outline: none;
+  background: transparent;
+  width: 100%;
+  font-size: 15px;
+}
+
+/* Focus effect */
+.input-box:focus-within {
+  border-color: #2563eb;
+  background: #fff;
+}
+
+/* Forgot password */
+.forgot {
+  text-align: right;
+  margin: 8px 0 20px;
+}
+
+.forgot a {
+  color: #2563eb;
+  text-decoration: none;
+  font-size: 14px;
+}
+
+.forgot a:hover {
+  text-decoration: underline;
+}
+
+/* Button */
+.btn {
+  width: 100%;
+  padding: 14px;
+  border-radius: 15px;
+  border: none;
+  background: #2563eb;
+  color: #fff;
+  font-size: 16px;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.btn:hover {
+  background: #1e4fd8;
+}
+
+.btnOTP {
+  margin-left: 10px;
+  padding: 10px;
+  border-radius: 12px;
+  border: none;
+  background: #2563eb;
+  color: #fff;
+  font-size: 14px;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+/* Footer */
+.footer-text {
+  text-align: center;
+  margin-top: 24px;
+  color: #6b7280;
+}
+
+.footer-text a {
+  color: #2563eb;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.footer-text a:hover {
+  text-decoration: underline;
+}
+
+/* Responsive */
+@media (max-width: 480px) {
+  .card {
+    width: 90%;
+    padding: 24px;
+  }
+}
+
+/* توحيد كلاس الدارك مود */
+body.dark-mode {
+  background: linear-gradient(180deg, #111827, #1f2933);
+}
+body.dark-mode .card {
+  background: #1f2933;
+  color: #f9fafb;
+}
+body.dark-mode .input-box {
+  background: #111827;
+  border-color: #374151;
+}
+body.dark-mode .input-box input {
+    color: #fff; 
+}

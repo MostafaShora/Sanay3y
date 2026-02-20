@@ -1,0 +1,45 @@
+<!Doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Reset Password</title>
+  <link rel="stylesheet" href="../css/form.css" />
+</head>
+
+<body>
+
+  <div id="navbar-container"></div>
+
+
+  <form class="card" id="resetForm" method="post" action="../index.html">
+    <h1>Reset Password</h1>
+    <p class="subtitle">Enter your email to reset your password</p>
+    <div class="form-group">
+      <label for="resetEmail">Email</label>
+      <div class="input-box">
+        <input type="email" id="resetEmail" placeholder="Enter your email" required />
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="otpInput">OTP Code</label>
+      <div class="input-box">
+        <input type="text" id="otpInput" placeholder="Enter OTP code" />
+        <button type="button" class="btnOTP" id="sendOtpBtn">Send OTP</button>
+      </div>
+    </div>
+
+    <button type="submit" class="btn">Reset</button>
+
+    <div class="footer-text">
+      Back to <a href="../html/sign-in.html">Sign in</a>
+    </div>
+  </form>
+
+  <script src="../js/shared.js"></script>
+  <script src="../js/auth.js"></script>
+</body>
+
+</html>

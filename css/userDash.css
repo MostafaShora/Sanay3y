@@ -1,0 +1,191 @@
+/* ================= المتغيرات الأساسية ================= */
+:root {
+    --primary: #2563eb;
+    --primary-hover: #1d4ed8;
+    --sidebar-bg: #1e293b;
+    --bg-main: #f8fafc;
+    --bg-card: #ffffff;
+    --text-main: #0f172a;
+    --text-muted: #64748b;
+    --border-color: #e2e8f0;
+}
+
+/* دعم الوضع الليلي تلقائياً */
+body.dark-mode {
+    --bg-main: #0f172a;
+    --bg-card: #1e293b;
+    --text-main: #f1f5f9;
+    --text-muted: #94a3b8;
+    --border-color: #334155;
+    --sidebar-bg: #020617;
+}
+
+body {
+    margin: 0;
+    font-family: 'Cairo', sans-serif; 
+    background-color: var(--bg-main);
+    color: var(--text-main);
+    transition: 0.3s;
+}
+
+/* ================= الهيكل العام ================= */
+.dashboard {
+    display: flex;
+    height: 100vh;
+}
+
+#menuBtn {
+    position: fixed;
+    top: 20px;
+    right: 20px; 
+    font-size: 24px;
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    cursor: pointer;
+    z-index: 1001;
+    color: var(--text-main);
+    padding: 5px 10px;
+}
+
+/* ================= السايد بار ================= */
+.sidebar {
+    width: 260px;
+    background: var(--sidebar-bg);
+    color: white;
+    padding: 20px;
+    transition: transform 0.4s ease;
+    display: flex;
+    flex-direction: column;
+    z-index: 1000;
+}
+
+.sidebar.hide {
+    transform: translateX(100%); 
+}
+
+.user-info-side {
+    padding: 20px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.user-role {
+    font-size: 11px;
+    background: var(--primary);
+    padding: 3px 10px;
+    border-radius: 20px;
+    font-weight: 600;
+}
+
+.sidebar button {
+    display: block;
+    width: 100%;
+    margin: 8px 0;
+    padding: 12px 15px;
+    background: none;
+    border: none;
+    color: rgba(255,255,255,0.7);
+    cursor: pointer;
+    text-align: right;
+    transition: 0.3s;
+    border-radius: 8px;
+    font-size: 15px;
+}
+
+.sidebar button:hover, .sidebar button.active {
+    background: rgba(255,255,255,0.1);
+    color: white;
+    padding-right: 25px;
+}
+
+/* ================= المحتوى الرئيسي ================= */
+.main {
+    flex: 1;
+    padding: 40px;
+    overflow-y: auto;
+    transition: 0.3s;
+}
+
+.card {
+    background: var(--bg-card);
+    padding: 25px;
+    border-radius: 15px;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    border: 1px solid var(--border-color);
+}
+
+.welcome-hero {
+    background: linear-gradient(135deg, var(--primary), #1e40af);
+    color: white;
+    padding: 40px;
+    border-radius: 20px;
+    margin-bottom: 30px;
+}
+
+/* ================= العناصر الداخلية ================= */
+.info-group {
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.info-group label {
+    font-weight: 700;
+    color: var(--primary);
+    display: block;
+    font-size: 14px;
+    margin-bottom: 5px;
+}
+
+.status {
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.status.pending { background: #fef3c7; color: #92400e; }
+.status.completed { background: #dcfce7; color: #166534; }
+
+.btn-edit {
+    background: var(--primary);
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: 0.3s;
+}
+
+.btn-edit:hover { background: var(--primary-hover); transform: translateY(-2px); }
+
+/* للموبايل */
+@media (max-width: 1024px) {
+    .side { width: 220px; }
+}
+
+@media (max-width: 768px) {
+    .container { flex-direction: column; }
+    .side {
+        width: 100%;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        padding: 15px;
+        border-left: none;
+        border-bottom: 1px solid var(--border-color);
+    }
+    .side h2 { display: none; }
+    .side ul { display: flex; gap: 10px; flex-wrap: wrap; justify-content: center; }
+    .side li { margin-bottom: 0; padding: 8px 12px; font-size: 14px; }
+    .main { padding: 20px; }
+}
+
+@media (max-width: 480px) {
+    .profile-grid { grid-template-columns: 1fr; }
+    .cards { grid-template-columns: 1fr; }
+}

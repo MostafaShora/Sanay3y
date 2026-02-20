@@ -1,0 +1,245 @@
+/* --- إعدادات عامة --- */
+:root {
+    --primary: #2563eb;
+    --secondary: #0f172a;
+    --bg: #ffffff;
+    --text: #1e293b;
+    --card-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+body.dark-mode {
+    --bg: #0f172a;
+    --text: #f8fafc;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: var(--bg);
+    color: var(--text);
+    direction: rtl;
+    transition: all 0.3s ease;
+    line-height: 1.6;
+}
+
+
+.hero {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    width: 100%;
+    height: 550px; 
+    background: linear-gradient(rgba(37, 99, 235, 0.85), rgba(15, 23, 42, 0.9)), url('../images/pexels-rezwan-1216589.jpg');
+    background-size: cover;
+    background-position: center;
+    color: white;
+    padding: 0 20px;
+}
+
+.hero h1 {
+    font-size: 3.5rem;
+    margin-bottom: 20px;
+    font-weight: 700;
+}
+
+.hero p {
+    font-size: 1.25rem;
+    max-width: 700px;
+    opacity: 0.9;
+}
+
+.hero button {
+    background-color: white; 
+    color: var(--primary);
+    padding: 15px 45px;
+    font-size: 1.1rem;
+    border-radius: 8px; 
+    margin-top: 30px;
+    cursor: pointer;
+    border: none;
+    transition: 0.3s;
+    font-weight: bold;
+}
+
+.hero button:hover {
+    transform: translateY(-3px);
+    background-color: #f1f5f9;
+}
+
+/* --- قسم الخدمات --- */
+.services-section {
+    padding: 80px 8%;
+    text-align: center;
+    background-color: var(--bg);
+}
+
+.services-section h2 {
+    color: var(--text);
+    margin-bottom: 50px;
+    font-size: 2.2rem;
+}
+
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 30px;
+}
+
+.card {
+    background-color: var(--bg);
+    padding: 35px 25px;
+    border-radius: 12px; 
+    text-align: center;
+    box-shadow: var(--card-shadow);
+    transition: 0.3s ease-in-out;
+    border: 1px solid rgba(0,0,0,0.05);
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    border-color: var(--primary);
+}
+
+.card .icon-container {
+    width: 100px;
+    height: 100px;
+    margin: 0 auto 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #eff6ff; 
+    border-radius: 50%;
+}
+
+.card .icon-container img {
+    width: 90px; 
+    height: 90px;
+    object-fit: cover;
+    border-radius: 50%; 
+    border:none;
+    box-shadow: none;
+}
+
+.card h3 {
+    margin-bottom: 10px;
+    color: var(--text);
+    font-size: 1.3rem;
+    font-weight: 600;
+}
+
+.card p {
+    color: #64748b; 
+    font-size: 0.95rem;
+    margin-bottom: 20px;
+}
+
+.card button {
+    background: transparent;
+    color: var(--primary);
+    border: none;
+    padding: 0;
+    font-weight: 600;
+    transition: 0.3s;
+    font-size: 0.95rem;
+}
+
+.card button:hover {
+    color: #1d4ed8;
+    text-decoration: underline;
+    background: transparent;
+}
+.card button::after {
+    content: " \2190"; 
+}
+
+/* --- كيف يعمل الموقع --- */
+.how-it-works {
+    background-color: #f8fafc; 
+    padding: 80px 8%;
+    text-align: center;
+}
+
+body.dark-mode .how-it-works {
+    background-color: #111827;
+}
+
+.how-it-works h2 {
+    color: var(--text);
+    margin-bottom: 50px;
+    font-size: 2.2rem;
+    font-weight: bold;
+}
+
+.steps-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+}
+
+.step-card {
+    background-color: var(--bg);
+    padding: 40px 30px;
+    border-radius: 12px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    transition: all 0.3s ease;
+    border: 1px solid rgba(0,0,0,0.05);
+    position: relative;
+    overflow: hidden;
+}
+
+.step-number {
+    font-size: 3rem;
+    font-weight: 900;
+    color: #eff6ff; 
+    position: absolute;
+    top: 10px;
+    left: 20px;
+    z-index: 0;
+}
+
+body.dark-mode .step-number { color: #1f2937; }
+
+.step-card h3 {
+    color: var(--text);
+    font-size: 1.4rem;
+    margin-bottom: 15px;
+    position: relative;
+    z-index: 1;
+}
+
+.step-card p {
+    color: #64748b;
+    font-size: 1rem;
+    line-height: 1.6;
+    position: relative;
+    z-index: 1;
+}
+
+
+@media (max-width: 768px) {
+    .hero {
+        height: 400px; 
+        padding: 0 15px;
+    }
+    .hero h1 {
+        font-size: 1.8rem !important;
+        line-height: 1.2;
+    }
+    .hero p {
+        font-size: 1rem;
+    }
+    .services-section {
+        padding: 40px 15px; 
+    }
+    .services-grid {
+        grid-template-columns: 1fr; 
+        gap: 20px;
+    }
+}

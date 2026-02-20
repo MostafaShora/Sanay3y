@@ -1,0 +1,196 @@
+/* ================= المتغيرات والألوان (النظام الموحد) ================= */
+:root {
+    --primary: #2563eb;
+    --primary-hover: #1d4ed8;
+    --star-color: #f59e0b;
+    --bg-page: #f8fafc;
+    --bg-card: #ffffff;
+    --text-main: #1e293b;
+    --text-sub: #64748b;
+    --border-color: #e2e8f0;
+    --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+    --border-radius: 16px;
+}
+
+/* قيم الوضع الليلي */
+body.dark-mode {
+    --bg-page: #0f172a;
+    --bg-card: #1e293b;
+    --text-main: #f1f5f9;
+    --text-sub: #94a3b8;
+    --border-color: #334155;
+    --shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+}
+
+/* ================= التنسيق العام ================= */
+body {
+    background-color: var(--bg-page);
+    color: var(--text-main);
+    transition: background 0.3s, color 0.3s;
+    font-family: 'Cairo', sans-serif;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 0 20px;
+    direction: rtl;
+}
+
+.category-label {
+    font-size: 26px;
+    font-weight: 700;
+    color: var(--text-main);
+    margin-bottom: 35px;
+    border-right: 6px solid var(--primary);
+    padding-right: 15px;
+    line-height: 1.2;
+}
+
+/* ================= شبكة الكروت (Grid) ================= */
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 30px;
+}
+
+/* ================= تصميم الكارت الاحترافي ================= */
+.details-section {
+    background: var(--bg-card);
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow);
+    padding: 25px;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    display: flex;
+    flex-direction: column;
+    border: 1px solid var(--border-color);
+    position: relative;
+    overflow: hidden;
+}
+
+.details-section:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+    border-color: var(--primary);
+}
+
+.handyman-card {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.avatar {
+    width: 90px;
+    height: 90px;
+    border-radius: 14px;
+    object-fit: cover;
+    background-color: var(--bg-page);
+    border: 2px solid var(--border-color);
+    transition: 0.3s;
+}
+
+.details-section:hover .avatar {
+    border-color: var(--primary);
+}
+
+.handyman-card h3 {
+    font-size: 20px;
+    color: var(--text-main);
+    margin-bottom: 8px;
+    font-weight: 700;
+}
+
+/* التقييم والنجوم */
+.rating {
+    color: var(--star-color);
+    font-weight: 700;
+    font-size: 15px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.rating span {
+    color: var(--text-sub);
+    font-size: 13px;
+    font-weight: 400;
+}
+
+/* أيقونات المعلومات */
+.experience, .contact-info p {
+    font-size: 14px;
+    color: var(--text-sub);
+    margin: 8px 0;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+/* تنسيق الأيقونات (لو استخدمت FontAwesome) */
+.experience::before { content: "📍"; font-size: 14px; }
+.contact-info p::before { content: "📞"; font-size: 14px; }
+
+/* ================= زر الحجز ================= */
+.book-btn {
+    width: 100%;
+    background: var(--primary);
+    color: white;
+    border: none;
+    padding: 14px;
+    border-radius: 12px;
+    font-weight: 700;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: auto; /* يخلي الزرار دايماً تحت */
+    transition: all 0.3s ease;
+    font-family: 'Cairo', sans-serif;
+}
+
+.book-btn:hover {
+    background-color: var(--primary-hover);
+    box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+    transform: scale(1.02);
+}
+
+.book-btn:active {
+    transform: scale(0.98);
+}
+
+/* ================= حالات خاصة ================= */
+.loading-state, .error-box, .no-data {
+    grid-column: 1 / -1;
+    text-align: center;
+    padding: 60px 20px;
+    background: var(--bg-card);
+    border-radius: var(--border-radius);
+    color: var(--text-sub);
+    border: 1px dashed var(--border-color);
+}
+
+.no-data {
+    font-weight: 600;
+    font-size: 18px;
+}
+
+/* ================= التجاوب (Responsive) ================= */
+@media (max-width: 768px) {
+    .category-label {
+        font-size: 22px;
+        text-align: center;
+        border-right: none;
+        border-bottom: 4px solid var(--primary);
+        padding-right: 0;
+        padding-bottom: 10px;
+    }
+    
+    .services-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .avatar {
+        width: 75px;
+        height: 75px;
+    }
+}

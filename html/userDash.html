@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Dashboard</title>
+    <link rel="stylesheet" href="../css/userDash.css">
+</head>
+<body>
+
+<div id="navbar-container"></div>
+
+<button id="menuBtn">☰</button>
+
+<div class="dashboard" dir="rtl"> <div class="sidebar" id="sidebar">
+        <div class="user-info-side">
+            <h2 id="sideUserName">لوحة تحكم المستخدم</h2>
+            <span class="user-role">عميل</span>
+        </div>
+        <button data-section="profile">👤 الملف الشخصي</button>
+        <button data-section="requests">🛠️ طلباتي</button>
+        <button data-section="reviews">⭐ التقييمات</button>
+    </div>
+
+    <div class="main" id="mainContent">
+        <div id="welcome-msg">
+            <h1>أهلاً بك 👋</h1>
+            <p>اختر من القائمة الجانبية لإدارة حسابك</p>
+        </div>
+    </div>
+</div>
+
+<div id="footer-container"></div>
+
+<script src="../js/shared.js"></script>
+<script src="../js/userDash.js"></script>
+</body>
+</html>
+

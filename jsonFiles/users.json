@@ -1,0 +1,276 @@
+[
+  {
+    "id": 1,
+    "name": "Admin",
+    "email": "admin@sanay3y.com",
+    "password": "Admin123",
+    "role": "admin",
+    "approved": true
+  },
+
+  {
+    "id": 2,
+    "name": "Ahmed Hassan",
+    "email": "ahmed@gmail.com",
+    "password": "Ahmed123",
+    "role": "user",
+    "approved": true
+  },
+  {
+    "id": 3,
+    "name": "Mostafa Ali",
+    "email": "mostafa@gmail.com",
+    "password": "Mostafa123",
+    "role": "user",
+    "approved": true
+  },
+  {
+    "id": 4,
+    "name": "Sara Mahmoud",
+    "email": "sara@gmail.com",
+    "password": "Sara123",
+    "role": "user",
+    "approved": true
+  },
+  {
+    "id": 5,
+    "name": "Omar Adel",
+    "email": "omar@gmail.com",
+    "password": "Omar123",
+    "role": "user",
+    "approved": true
+  },
+
+
+  {
+    "id": 6,
+    "name": "Mohamed Hassan",
+    "email": "plumber1@gmail.com",
+    "password": "Plumber123",
+    "role": "provider",
+    "service": "Plumbing",
+    "area": "Nasr City",
+    "phone": "01011111111",
+    "rating": 4.8,
+    "approved": true,
+    "subscription": "premium"
+  },
+  {
+    "id": 7,
+    "name": "Ahmed Said",
+    "email": "plumber2@gmail.com",
+    "password": "Plumber123",
+    "role": "provider",
+    "service": "Plumbing",
+    "area": "Heliopolis",
+    "phone": "01022222222",
+    "rating": 4.3,
+    "approved": true,
+    "subscription": "monthly"
+  },
+  {
+    "id": 8,
+    "name": "Tamer Yasser",
+    "email": "plumber3@gmail.com",
+    "password": "Plumber123",
+    "role": "provider",
+    "service": "Plumbing",
+    "area": "Maadi",
+    "phone": "01033333333",
+    "rating": 4.6,
+    "approved": true,
+    "subscription": "free"
+  },
+  {
+    "id": 9,
+    "name": "Karim Hany",
+    "email": "plumber4@gmail.com",
+    "password": "Plumber123",
+    "role": "provider",
+    "service": "Plumbing",
+    "area": "Giza",
+    "phone": "01044444444",
+    "rating": 3.9,
+    "approved": false,
+    "subscription": "free"
+  },
+
+
+  {
+    "id": 10,
+    "name": "Ali Mahmoud",
+    "email": "electric1@gmail.com",
+    "password": "Electric123",
+    "role": "provider",
+    "service": "Electricity",
+    "area": "Maadi",
+    "phone": "01111111111",
+    "rating": 4.6,
+    "approved": true,
+    "subscription": "premium"
+  },
+  {
+    "id": 11,
+    "name": "Hassan Fathy",
+    "email": "electric2@gmail.com",
+    "password": "Electric123",
+    "role": "provider",
+    "service": "Electricity",
+    "area": "Dokki",
+    "phone": "01122222222",
+    "rating": 4.1,
+    "approved": true,
+    "subscription": "monthly"
+  },
+  {
+    "id": 12,
+    "name": "Yasser Adel",
+    "email": "electric3@gmail.com",
+    "password": "Electric123",
+    "role": "provider",
+    "service": "Electricity",
+    "area": "Shobra",
+    "phone": "01133333333",
+    "rating": 3.8,
+    "approved": false,
+    "subscription": "free"
+  },
+
+
+  {
+    "id": 13,
+    "name": "Mahmoud Adel",
+    "email": "painter1@gmail.com",
+    "password": "Painter123",
+    "role": "provider",
+    "service": "Painting",
+    "area": "Giza",
+    "phone": "01211111111",
+    "rating": 4.7,
+    "approved": true,
+    "subscription": "monthly"
+  },
+  {
+    "id": 14,
+    "name": "Youssef Kamal",
+    "email": "painter2@gmail.com",
+    "password": "Painter123",
+    "role": "provider",
+    "service": "Painting",
+    "area": "October",
+    "phone": "01222222222",
+    "rating": 4.0,
+    "approved": true,
+    "subscription": "premium"
+  },
+  {
+    "id": 15,
+    "name": "Sherif Reda",
+    "email": "painter3@gmail.com",
+    "password": "Painter123",
+    "role": "provider",
+    "service": "Painting",
+    "area": "Helwan",
+    "phone": "01233333333",
+    "rating": 3.7,
+    "approved": false,
+    "subscription": "free"
+  },
+
+
+  {
+    "id": 16,
+    "name": "Islam Reda",
+    "email": "carpenter1@gmail.com",
+    "password": "Carpenter123",
+    "role": "provider",
+    "service": "Carpentry",
+    "area": "Shubra",
+    "phone": "01511111111",
+    "rating": 4.4,
+    "approved": true,
+    "subscription": "premium"
+  },
+  {
+    "id": 17,
+    "name": "Khaled Nabil",
+    "email": "carpenter2@gmail.com",
+    "password": "Carpenter123",
+    "role": "provider",
+    "service": "Carpentry",
+    "area": "Imbaba",
+    "phone": "01522222222",
+    "rating": 3.9,
+    "approved": true,
+    "subscription": "monthly"
+  },
+  {
+    "id": 18,
+    "name": "Wael Mostafa",
+    "email": "carpenter3@gmail.com",
+    "password": "Carpenter123",
+    "role": "provider",
+    "service": "Carpentry",
+    "area": "Faisal",
+    "phone": "01533333333",
+    "rating": 4.2,
+    "approved": true,
+    "subscription": "free"
+  },
+
+
+  {
+    "id": 19,
+    "name": "Rania Ahmed",
+    "email": "clean1@gmail.com",
+    "password": "Clean123",
+    "role": "provider",
+    "service": "Cleaning",
+    "area": "Nasr City",
+    "phone": "01611111111",
+    "rating": 4.5,
+    "approved": true,
+    "subscription": "premium"
+  },
+  {
+    "id": 20,
+    "name": "Mona Salah",
+    "email": "clean2@gmail.com",
+    "password": "Clean123",
+    "role": "provider",
+    "service": "Cleaning",
+    "area": "Dokki",
+    "phone": "01622222222",
+    "rating": 4.1,
+    "approved": true,
+    "subscription": "monthly"
+  },
+
+
+  {
+    "id": 21,
+    "name": "Hany Ibrahim",
+    "email": "garden1@gmail.com",
+    "password": "Garden123",
+    "role": "provider",
+    "service": "Gardening",
+    "area": "Sheikh Zayed",
+    "phone": "01711111111",
+    "rating": 4.6,
+    "approved": true,
+    "subscription": "premium"
+  },
+  {
+    "id": 22,
+    "name": "Amr Samy",
+    "email": "garden2@gmail.com",
+    "password": "Garden123",
+    "role": "provider",
+    "service": "Gardening",
+    "area": "6 October",
+    "phone": "01722222222",
+    "rating": 3.9,
+    "approved": true,
+    "subscription": "free"
+  }
+]

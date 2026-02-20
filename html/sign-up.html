@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <title>Sign Up</title>
+  <link rel="stylesheet" href="../css/form.css" />
+
+
+</head>
+
+<body>
+  <div id="navbar-container"></div>
+
+  <form class="card" id="registerForm" method="post" action="../index.html">
+    <h1>Create Account</h1>
+    <p class="subtitle">Sign up to get started</p>
+
+    <!-- Name -->
+    <div class="form-group">
+      <label for="name">Name</label>
+      <div class="input-box">
+        <input
+          type="text"
+          id="name"
+          placeholder="Your name"
+          required
+          pattern="^[a-zA-Z\s]{2,}$" />
+      </div>
+    </div>
+
+    <!-- Email -->
+    <div class="form-group">
+      <label for="registerEmail">Email</label>
+      <div class="input-box">
+        <input
+          type="email"
+          id="registerEmail"
+          placeholder="Enter your email"
+          required
+           />
+      </div>
+    </div>
+
+    <!-- Password -->
+    <div class="form-group">
+      <label for="registerPassword">Password</label>
+      <div class="input-box">
+        <input
+          type="password"
+          id="registerPassword"
+          placeholder="••••••••"
+          required
+          
+          />
+      </div>
+    </div>
+
+    <!-- Role -->
+    <div class="form-group">
+      <label for="role">Role</label>
+      <div class="input-box">
+        <select id="role" required>
+          <option value="">Select a role</option>
+          <option value="user">User</option>
+          <option value="provider">Service Provider</option>
+        </select>
+      </div>
+    </div>
+
+    <button type="submit" class="btn">Sign Up</button>
+
+    <div class="footer-text">
+      Already have an account?
+      <a href="../html/sign-in.html">Sign In</a>
+    </div>
+  </form>
+
+  <script src="../js/shared.js"></script>
+  <script src="../js/auth.js"></script>
+</body>
+
+</html>

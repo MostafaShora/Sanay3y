@@ -1,0 +1,191 @@
+/* ================= الأساسيات والمتغيرات ================= */
+:root {
+    --primary: #2563eb;
+    --primary-gradient: linear-gradient(135deg, #5a0080, #009dff);
+    --bg-main: #f8fafc;
+    --bg-card: #ffffff;
+    --text-title: #0062ff;
+    --text-p: #64748b;
+    --text-features: #334155;
+    --border-color: #e2e8f0;
+    --shadow: 0 10px 25px rgba(0,0,0,0.05);
+}
+
+/* ألوان الوضع الليلي */
+body.dark-mode {
+    --bg-main: #0f172a;
+    --bg-card: #1e293b;
+    --text-title: #3b82f6;
+    --text-p: #94a3b8;
+    --text-features: #e2e8f0;
+    --border-color: #334155;
+    --shadow: 0 10px 30px rgba(0,0,0,0.3);
+}
+
+body {
+    background-color: var(--bg-main);
+    font-family: 'Cairo', sans-serif;
+    margin: 0;
+    padding: 0;
+    transition: 0.3s ease;
+}
+
+/* ================= قسم الخطط ================= */
+.plans-section {
+    max-width: 1200px;
+    margin: 60px auto;
+    padding: 0 20px;
+    text-align: center;
+}
+
+.plans-title {
+    font-size: 40px;
+    font-weight: 700;
+    color: var(--text-title);
+    margin-bottom: 10px;
+}
+
+.plans-subtitle {
+    font-size: 20px; /* صغرنا الحجم شوية عشان التناسق */
+    color: var(--text-p);
+    margin-bottom: 50px;
+}
+
+/* الحاوية */
+.plans-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); /* تجاوب ذكي */
+    gap: 25px;
+    justify-items: center;
+}
+
+/* ================= الكروت ================= */
+.plan-card {
+    background: var(--bg-card);
+    border-radius: 24px;
+    padding: 30px 20px;
+    box-shadow: var(--shadow);
+    border: 1px solid var(--border-color);
+    width: 100%;
+    max-width: 280px;
+    text-align: center;
+    transition: all 0.3s ease;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+
+.plan-card:hover {
+    transform: translateY(-12px);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.12);
+    border-color: var(--primary);
+}
+
+/* الكارت المتميز (Featured) */
+.plan-card.featured {
+    border: 2px solid var(--primary);
+    transform: scale(1.05);
+}
+.plan-card.featured:hover {
+    transform: translateY(-12px) scale(1.05);
+}
+
+/* شارة الخصم */
+.discount-badge {
+    background: var(--primary-gradient);
+    color: white;
+    padding: 6px 15px;
+    border-radius: 30px;
+    font-size: 13px;
+    font-weight: bold;
+    display: inline-block;
+    margin: 0 auto 20px auto;
+    width: fit-content;
+}
+
+.plan-name {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--text-title);
+    margin-bottom: 15px;
+}
+
+.plan-price {
+    font-size: 36px;
+    font-weight: 800;
+    color: var(--primary);
+}
+
+.plan-price span {
+    font-size: 14px;
+    font-weight: 400;
+    color: var(--text-p);
+    margin-right: 5px;
+}
+
+.plan-duration {
+    font-size: 14px;
+    color: var(--text-p);
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 20px;
+    margin-bottom: 20px;
+}
+
+/* المميزات */
+.plan-features {
+    flex-grow: 1; /* عشان يخلي الزرار دايما تحت في مستوى واحد */
+    margin-bottom: 20px;
+}
+
+.plan-features p {
+    margin: 12px 0;
+    font-size: 15px;
+    color: var(--text-features);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-align: right;
+}
+
+.plan-features p::before {
+    content: "✓";
+    color: #22c55e; /* لون أخضر للصح */
+    font-weight: bold;
+    font-size: 16px;
+}
+
+/* ================= الأزرار ================= */
+.plan-btn {
+    background: var(--primary-gradient);
+    color: white;
+    text-decoration: none;
+    padding: 12px 25px;
+    border-radius: 30px;
+    display: block;
+    font-weight: 600;
+    transition: 0.3s;
+    border: none;
+    cursor: pointer;
+}
+
+.plan-btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 5px 15px rgba(0, 157, 255, 0.4);
+    filter: brightness(1.1);
+}
+
+/* ================= التجاوب (Responsive) ================= */
+@media (max-width: 768px) {
+    .plans-container {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+    
+    .plan-card {
+        max-width: 90%;
+    }
+    
+    .plan-card.featured {
+        transform: scale(1);
+    }
+}

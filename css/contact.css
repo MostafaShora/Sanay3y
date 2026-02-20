@@ -1,0 +1,285 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Cairo', sans-serif;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    overflow-x: hidden;
+    background: white;
+    min-height: 100vh;
+    display: block;
+    direction: rtl;
+}
+
+.contact-header {
+    background: rgb(0, 81, 255);
+    padding: 120px 20px;
+    text-align: center;
+    color: white;
+    width: 100vw;
+    margin-bottom: 50px;
+}
+
+.contact-header .title {
+    font-size: 48px;
+    font-weight: 700;
+    margin-bottom: 10px;
+    margin-top: -40px;
+}
+
+.contact-header .subtitle {
+    font-size: 20px;
+    opacity: 0.95;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.page-content {
+    display: flex;
+    gap: 120px;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    align-items: flex-start;
+}
+
+.contact-box {
+    width: 70%;
+    max-width: none;
+    background-color: white;
+    border-radius: 15px;
+    padding: 40px;
+    margin: 0;
+    border: 1px solid #eef2f6;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.05);
+}
+
+.contact-box:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+}
+
+.contact-title {
+    text-align: center;
+    color: #2c3e50;
+    margin-bottom: 30px;
+    font-size: 32px;
+    font-weight: 700;
+    position: relative;
+    padding-bottom: 15px;
+}
+
+.contact-title::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    right: 50%;
+    transform: translateX(50%);
+    width: 100px;
+    height: 4px;
+    background: linear-gradient(to right, #6a11cb, #2575fc);
+    border-radius: 2px;
+}
+
+.form-input {
+    width: 100%;
+    padding: 15px;
+    margin: 12px 0;
+    border: 2px solid white;
+    border-radius: 10px;
+    font-size: 16px;
+    font-family: 'Cairo', sans-serif;
+    background-color: white;
+}
+
+.form-input:focus {
+    outline: none;
+    border-color: rgb(0, 11, 128);
+    border-width: 2px;
+    background-color: white;
+}
+
+textarea.form-input {
+    min-height: 150px;
+    line-height: 1.6;
+}
+
+.submit-btn {
+    width: 100%;
+    padding: 16px;
+    background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-size: 18px;
+    font-weight: 700;
+    cursor: pointer;
+    margin-top: 20px;
+    transition: all 0.3s ease;
+    font-family: 'Cairo', sans-serif;
+}
+
+.submit-btn:hover {
+    transform: translateY(-3px);
+}
+
+.info-box {
+    width: 50%;
+    max-width: none;
+    background: white;
+    border-radius: 20px;
+    padding: 35px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.05);
+    border: 1px solid #eef2f6;
+}
+
+.info-title {
+    color: #1e293b;
+    font-size: 26px;
+    font-weight: 700;
+    margin-bottom: 30px;
+    position: relative;
+    padding-bottom: 15px;
+}
+
+.info-title::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 70px;
+    height: 3px;
+    background: linear-gradient(to right, #6a11cb, #2575fc);
+    border-radius: 2px;
+}
+
+.info-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 15px;
+    padding: 20px;
+    margin-bottom: 15px;
+    background: #f8fafc;
+    border-radius: 16px;
+    transition: all 0.3s ease;
+}
+
+.info-item:hover {
+    background: linear-gradient(135deg, #6a11cb10, #2575fc10);
+    transform: translateX(-5px);
+}
+
+.info-icon {
+    font-size: 28px;
+    width: 54px;
+    height: 54px;
+    background: white;
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+}
+
+.info-content {
+    flex: 1;
+}
+
+.info-label {
+    font-size: 15px;
+    font-weight: 600;
+    color: rgb(100, 116, 139);
+    margin-bottom: 6px;
+}
+
+.info-text {
+    font-size: 17px;
+    font-weight: 700;
+    color: #0f172a;
+    line-height: 1.6;
+}
+
+.info-sub {
+    font-size: 15px;
+    color: rgba(0, 115, 255, 0.881);
+    margin-top: 5px;
+    font-weight: 500;
+}
+
+@media (max-width: 992px) {
+    .page-content {
+        flex-direction: column;
+    }
+    
+    .contact-box,
+    .info-box {
+        max-width: 100%;
+    }
+}
+
+@media (max-width: 768px) {
+    .contact-header {
+        padding: 60px 20px;
+    }
+    
+    .contact-header .title {
+        font-size: 36px;
+    }
+    
+    .contact-header .subtitle {
+        font-size: 18px;
+    }
+    
+    .contact-box,
+    .info-box {
+        padding: 30px;
+    }
+    
+    .contact-title {
+        font-size: 28px;
+    }
+    .page-content{
+        flex-direction: column;
+    }
+}
+
+@media (min-width: 601px) and (max-width: 1024px) {
+    .contact-box {
+        max-width: 600px;
+        padding: 35px;
+    }
+    
+    .contact-title {
+        font-size: 30px;
+    }
+}
+/* دعم الدارك مود لصفحة التواصل */
+body.dark-mode {
+    background-color: #111827;
+}
+
+body.dark-mode .contact-box, 
+body.dark-mode .info-box,
+body.dark-mode .info-item,
+body.dark-mode .info-icon {
+    background-color: #1f2937;
+    color: white;
+    border-color: #374151;
+}
+
+body.dark-mode .form-input {
+    background-color: #111827;
+    color: white;
+    border-color: #374151;
+}
+
+body.dark-mode .info-text,
+body.dark-mode .contact-title,
+body.dark-mode .info-title {
+    color: #f9fafb;
+}

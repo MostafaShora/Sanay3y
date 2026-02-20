@@ -1,0 +1,96 @@
+/* ================= المتغيرات الموحدة للنظام ================= */
+:root {
+    --primary: #2563eb;
+    --secondary: #1e293b;
+    --bg-page: #ffffff;
+    --bg-section: #f8fafc;
+    --bg-card: #ffffff;
+    --text-main: #1e293b;
+    --text-muted: #64748b;
+    --border-color: #e2e8f0;
+    --card-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+}
+
+/* ألوان الوضع الليلي */
+body.dark-mode {
+    --bg-page: #0f172a;
+    --bg-section: #1e293b;
+    --bg-card: #1e293b;
+    --text-main: #f1f5f9;
+    --text-muted: #94a3b8;
+    --secondary: #3b82f6;
+    --border-color: #334155;
+    --card-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+body {
+    background-color: var(--bg-page);
+    color: var(--text-main);
+    transition: background 0.3s ease, color 0.3s ease;
+    margin: 0;
+    font-family: 'Cairo', sans-serif;
+}
+
+/* ================= 1. Hero Section ================= */
+.about-hero {
+    background: linear-gradient(135deg, var(--primary), #1d4ed8);
+    color: white;
+    padding: 100px 20px;
+    text-align: center;
+}
+.about-hero h1 { font-size: 3rem; margin-bottom: 15px; font-weight: 800; }
+.about-hero p { font-size: 1.2rem; opacity: 0.9; max-width: 700px; margin: 0 auto; }
+
+/* ================= 2. Story Section ================= */
+.story-section { padding: 80px 8%; background: var(--bg-page); }
+.story-content { display: flex; align-items: center; gap: 60px; max-width: 1200px; margin: 0 auto; direction: rtl; }
+.story-text { flex: 1; text-align: right; }
+.story-text h2 { color: var(--secondary); font-size: 2.2rem; margin-bottom: 25px; }
+.story-text p { color: var(--text-muted); line-height: 1.9; font-size: 1.15rem; }
+.story-image { flex: 1; }
+.story-image img { width: 100%; border-radius: 20px; box-shadow: var(--card-shadow); border: 1px solid var(--border-color); }
+
+/* ================= 3. Mission & Values ================= */
+.values-section { padding: 80px 8%; text-align: center; background-color: var(--bg-section); }
+.section-sub { color: var(--text-muted); margin-bottom: 50px; font-size: 1.1rem; }
+.values-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 30px; max-width: 1200px; margin: 0 auto; }
+.value-card { background: var(--bg-card); padding: 40px 30px; border-radius: 20px; border: 1px solid var(--border-color); transition: all 0.3s ease; box-shadow: var(--card-shadow); }
+.value-card:hover { transform: translateY(-10px); }
+.value-icon { font-size: 2.5rem; margin-bottom: 20px; display: block; }
+
+/* ================= 4. Team Section ================= */
+.team-section { padding: 80px 8%; background: var(--bg-page); text-align: center; }
+.team-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 30px; max-width: 1200px; margin: 0 auto; }
+.team-card { background: var(--bg-card); padding: 35px; border-radius: 20px; border: 1px solid var(--border-color); box-shadow: var(--card-shadow); }
+.team-img-placeholder { width: 90px; height: 90px; background: var(--primary); border-radius: 50%; margin: 0 auto 25px; }
+
+/* ================= 5. Stats Bar ================= */
+.stats-bar { background: linear-gradient(to right, var(--primary), #1d4ed8); color: white; padding: 60px 8%; display: flex; justify-content: space-around; flex-wrap: wrap; gap: 40px; }
+.stat-item h3 { font-size: 2.8rem; margin-bottom: 8px; font-weight: 800; }
+
+/* ================= 6. إصلاح الفوتر (Footer Fix) ================= */
+footer {
+    background-color: #111827 !important; 
+    color: #ffffff !important;
+    padding: 60px 20px 20px;
+    margin-top: 0; 
+    border-top: 1px solid rgba(255,255,255,0.1);
+    width: 100%;
+    position: relative;
+    z-index: 10;
+}
+
+footer p, footer h3, footer a {
+    color: rgba(255, 255, 255, 0.8) !important;
+    text-decoration: none;
+}
+
+footer a:hover { color: var(--primary) !important; }
+
+/* ================= 7. Responsive ================= */
+@media (max-width: 768px) {
+    .story-content { flex-direction: column-reverse; text-align: center; }
+    .story-text { text-align: center; }
+    .about-hero h1 { font-size: 2.2rem; }
+    .stat-item { width: 45%; }
+}

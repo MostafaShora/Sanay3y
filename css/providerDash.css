@@ -1,0 +1,258 @@
+/* ================= الأساسيات ================= */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Cairo', Arial, sans-serif;
+}
+
+:root {
+    --primary: #2563eb;
+    --primary-hover: #1d4ed8;
+    --bg-main: #f8fafc;
+    --bg-card: #ffffff;
+    --text-main: #0f172a;
+    --text-muted: #64748b;
+    --sidebar-bg: #1e293b;
+    --border-color: #e2e8f0;
+    --success: #22c55e;
+    --danger: #ef4444;
+    --warning: #f59e0b;
+}
+
+body.dark-mode {
+    --bg-main: #0f172a;
+    --bg-card: #1e293b;
+    --text-main: #f1f5f9;
+    --text-muted: #94a3b8;
+    --border-color: #334155;
+    --sidebar-bg: #020617;
+}
+
+body {
+    background-color: var(--bg-main);
+    color: var(--text-main);
+    font-size: 18px;
+    transition: background 0.3s, color 0.3s;
+}
+
+.container {
+    display: flex;
+    min-height: 100vh;
+}
+
+/* ================= السايد بار (Sidebar) ================= */
+.side {
+    width: 280px;
+    background: var(--sidebar-bg);
+    color: white;
+    padding: 30px;
+    transition: 0.3s;
+    border-left: 1px solid var(--border-color);
+}
+
+.side h2 {
+    font-size: 24px;
+    margin-bottom: 30px;
+    color: var(--primary);
+    text-align: center;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+    padding-bottom: 15px;
+}
+
+.side ul {
+    list-style: none;
+}
+
+.side li {
+    margin-bottom: 15px;
+    cursor: pointer;
+    font-size: 16px;
+    padding: 12px 15px;
+    border-radius: 10px;
+    transition: 0.3s;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.side li:hover, .side li.active {
+    background: var(--primary);
+    color: white;
+    transform: translateX(-5px); /* حركة خفيفة جهة اليمين في العربي */
+}
+
+.side li.active {
+    border-right: 4px solid white;
+}
+
+/* ================= المحتوى الرئيسي (Main) ================= */
+.main {
+    flex: 1;
+    padding: 40px;
+    overflow-y: auto;
+}
+
+.welcome-header {
+    margin-bottom: 30px;
+}
+
+.welcome-header h1 {
+    font-size: 28px;
+    margin-bottom: 10px;
+}
+
+.badge {
+    background: var(--primary);
+    color: white;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 14px;
+}
+
+/* ================= الكروت (Cards) ================= */
+.cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 25px;
+    margin-bottom: 40px;
+}
+
+.card {
+    background: var(--bg-card);
+    padding: 25px;
+    border-radius: 16px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease;
+    border: 1px solid var(--border-color);
+    text-align: center;
+}
+
+.card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 20px rgba(0, 0, 0, 0.1);
+}
+
+.card-icon {
+    font-size: 35px;
+    margin-bottom: 15px;
+    display: block;
+}
+
+.card h3 {
+    color: var(--text-muted);
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
+.card p {
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--text-main);
+}
+
+/* كارت الاشتراك المتميز */
+.sub-card {
+    border: 2px solid var(--warning) !important;
+    background: linear-gradient(to bottom, var(--bg-card), rgba(245, 158, 11, 0.05)) !important;
+}
+
+.btn-upgrade-dash {
+    margin-top: 15px;
+    background: var(--primary);
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+    width: 100%;
+    transition: 0.3s;
+}
+
+.btn-upgrade-dash:hover {
+    background: var(--primary-hover);
+}
+
+/* ================= الملف الشخصي ================= */
+.profile-container {
+    background: var(--bg-card);
+    padding: 30px;
+    border-radius: 16px;
+    border: 1px solid var(--border-color);
+}
+
+.profile-header {
+    margin-bottom: 25px;
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 15px;
+}
+
+.profile-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+}
+
+.profile-item label {
+    font-weight: bold;
+    color: var(--primary);
+    font-size: 14px;
+    margin-bottom: 8px;
+}
+
+.profile-item input {
+    padding: 12px;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    background-color: var(--bg-main);
+    color: var(--text-main);
+    font-size: 16px;
+}
+
+.profile-actions {
+    margin-top: 30px;
+}
+
+.btn-primary {
+    background: var(--primary);
+    color: white;
+    padding: 12px 30px;
+    border: none;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.btn-primary:hover {
+    background: var(--primary-hover);
+}
+
+/* ================= التجاوب (Responsive) ================= */
+@media (max-width: 1024px) {
+    .side { width: 220px; }
+}
+
+@media (max-width: 768px) {
+    .container { flex-direction: column; }
+    .side {
+        width: 100%;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        padding: 15px;
+        border-left: none;
+        border-bottom: 1px solid var(--border-color);
+    }
+    .side h2 { display: none; }
+    .side ul { display: flex; gap: 10px; flex-wrap: wrap; justify-content: center; }
+    .side li { margin-bottom: 0; padding: 8px 12px; font-size: 14px; }
+    .main { padding: 20px; }
+}
+
+@media (max-width: 480px) {
+    .profile-grid { grid-template-columns: 1fr; }
+    .cards { grid-template-columns: 1fr; }
+}
