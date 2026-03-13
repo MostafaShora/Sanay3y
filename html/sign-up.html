@@ -3,79 +3,168 @@
 
 <head>
   <meta charset="UTF-8" />
-  <title>Sign Up</title>
+  <title>انشء حساب - صنايعي</title>
   <link rel="stylesheet" href="../css/form.css" />
-
-
+  <style>
+    .form-group small {
+      color: #ef4444;
+      font-size: 12px;
+      display: block;
+      margin-top: 5px;
+    }
+    .form-group small.success {
+      color: #10b981;
+    }
+    .role-fields {
+      display: none;
+      background: #f3f4f6;
+      padding: 15px;
+      border-radius: 8px;
+      margin: 15px 0;
+    }
+    .role-fields.active {
+      display: block;
+    }
+    body.dark .role-fields {
+      background: #1f2937;
+    }
+  </style>
 </head>
 
 <body>
   <div id="navbar-container"></div>
 
   <form class="card" id="registerForm" method="post" action="../index.html">
-    <h1>Create Account</h1>
-    <p class="subtitle">Sign up to get started</p>
+    <h1>انشء حساب</h1>
+    <p class="subtitle">سجل حساب للبدء</p>
 
     <!-- Name -->
     <div class="form-group">
-      <label for="name">Name</label>
+      <label for="name">الاسم الكامل <span style="color: #ef4444;">*</span></label>
       <div class="input-box">
         <input
           type="text"
           id="name"
-          placeholder="Your name"
-          required
-          pattern="^[a-zA-Z\s]{2,}$" />
+          placeholder="أدخل اسمك الكامل"
+          required />
       </div>
+      <small id="nameError"></small>
     </div>
 
     <!-- Email -->
     <div class="form-group">
-      <label for="registerEmail">Email</label>
+      <label for="registerEmail">البريد الإلكتروني <span style="color: #ef4444;">*</span></label>
       <div class="input-box">
         <input
           type="email"
           id="registerEmail"
-          placeholder="Enter your email"
-          required
-           />
+          placeholder="بريدك الإلكتروني"
+          required />
+      </div>
+      <small id="emailError"></small>
+    </div>
+
+    <!-- Phone -->
+    <div class="form-group">
+      <label for="phone">رقم الهاتف <span style="color: #ef4444;">*</span></label>
+      <div class="input-box">
+        <input
+          type="tel"
+          id="phone"
+          placeholder="01XXXXXXXXX أو +20-1X-XXXXXXXX"
+          required />
+      </div>
+      <small id="phoneError"></small>
+    </div>
+
+    <!-- Role -->
+    <div class="form-group">
+      <label for="role">اختر دورك <span style="color: #ef4444;">*</span></label>
+      <div class="input-box">
+        <select id="role" required>
+          <option value="">-- اختر دورك --</option>
+          <option value="user"><i class="fa-solid fa-user"></i> عميل</option>
+          <option value="provider">🔧 فني خدمات</option>
+        </select>
+      </div>
+    </div>
+
+    <!-- Provider Fields -->
+    <div id="providerFields" class="role-fields">
+      <h3 style="margin-top: 0; color: #3b82f6;">متطلبات الفني الخدمات</h3>
+      
+      <!-- Area (Governorate) -->
+      <div class="form-group">
+        <label for="area">المحافظة/المنطقة <span style="color: #ef4444;">*</span></label>
+        <div class="input-box">
+          <select id="area">
+            <option value="">-- اختر المحافظة --</option>
+            <option value="cairo">القاهرة</option>
+            <option value="giza">الجيزة</option>
+            <option value="alexandria">الإسكندرية</option>
+            <option value="aswan">أسوان</option>
+            <option value="luxor">الأقصر</option>
+            <option value="mansoura">المنصورة</option>
+            <option value="zagazig">الزقازيق</option>
+            <option value="tanta">طنطا</option>
+            <option value="other">أخرى</option>
+          </select>
+        </div>
+        <small id="areaError"></small>
+      </div>
+
+      <!-- Service Type -->
+      <div class="form-group">
+        <label for="service">التخصص <span style="color: #ef4444;">*</span></label>
+        <div class="input-box">
+          <select id="service">
+            <option value="">-- اختر التخصص --</option>
+            <option value="plumbing">سباكة</option>
+            <option value="electricity">كهرباء</option>
+            <option value="carpentry">نجارة</option>
+            <option value="painting">نقاشة</option>
+          </select>
+        </div>
+        <small id="serviceError"></small>
       </div>
     </div>
 
     <!-- Password -->
     <div class="form-group">
-      <label for="registerPassword">Password</label>
+      <label for="registerPassword">كلمة السر <span style="color: #ef4444;">*</span></label>
       <div class="input-box">
         <input
           type="password"
           id="registerPassword"
-          placeholder="••••••••"
-          required
-          
-          />
+          placeholder="كلمة قوية (6+ أحرف)"
+          required />
       </div>
+      <small id="passwordError"></small>
+      <small id="passwordStrength" style="color: #f59e0b;"></small>
     </div>
 
-    <!-- Role -->
+    <!-- Confirm Password -->
     <div class="form-group">
-      <label for="role">Role</label>
+      <label for="confirmPassword">تأكيد كلمة السر <span style="color: #ef4444;">*</span></label>
       <div class="input-box">
-        <select id="role" required>
-          <option value="">Select a role</option>
-          <option value="user">User</option>
-          <option value="provider">Service Provider</option>
-        </select>
+        <input
+          type="password"
+          id="confirmPassword"
+          placeholder="أعد كتابة كلمة السر"
+          required />
       </div>
+      <small id="confirmError"></small>
     </div>
 
-    <button type="submit" class="btn">Sign Up</button>
+    <button type="submit" class="btn">انشئ حساب</button>
 
     <div class="footer-text">
-      Already have an account?
-      <a href="../html/sign-in.html">Sign In</a>
+      هل لديك حساب بالفعل؟
+      <a href="../html/sign-in.html">سجل الدخول</a>
     </div>
   </form>
 
+  <script src="../js/logic.js"></script>
   <script src="../js/shared.js"></script>
   <script src="../js/auth.js"></script>
 </body>

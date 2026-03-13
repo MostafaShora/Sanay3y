@@ -72,7 +72,7 @@ function renderNavbar() {
     // زرار الثيم دايماً بيتحط في الآخر
     const themeBtn = document.createElement('button');
     themeBtn.id = 'theme-btn';
-    themeBtn.textContent = '🌙'; 
+    themeBtn.innerHTML = '<i class="fa-solid fa-moon"></i>'; 
     themeBtn.onclick = () => {
         if (typeof toggleDarkMode === 'function') {
             toggleDarkMode();
@@ -196,7 +196,7 @@ function toggleDarkMode() {
 function updateThemeIcon(isDark) {
     const btn = document.getElementById('theme-toggle');
     if (btn) {
-        btn.innerText = isDark ? '☀️' : '🌙';
+        btn.innerText = isDark ? '<i class="fa-solid fa-sun"></i>' : '<i class="fa-solid fa-moon"></i>';
     }
 }
 
@@ -389,3 +389,155 @@ body {
 `;
 
 document.head.insertAdjacentHTML('beforeend', componentStyles);
+
+// ============== نظام الرسائل المتقدم (Advanced Toast System) ==============
+class NotificationSystem {
+    constructor() {
+        this.container = this.createContainer();
+        this.queue = [];
+        this.isShowing = false;
+    }
+
+    createContainer() {
+        let container = document.getElementById('notification-system');
+        if (!container) {
+            container = document.createElement('div');
+            container.id = 'notification-system';
+            container.style.cssText = `
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                z-index: 9999;
+                display: flex;
+                flex-direction: column;
+                gap: 10px;
+                max-width: 400px;
+                pointer-events: none;
+            `;
+            document.body.appendChild(container);
+        }
+        return container;
+    }
+
+    show(message, type = 'info', duration = 4000) {
+        const notification = document.createElement('div');
+        
+        const icons = {
+            success: '<i class="fa-solid fa-check"></i>',
+            error: '<i class="fa-solid fa-xmark"></i>',
+            warning: '⚠️',
+            info: 'ℹ️'
+        };
+
+        const colors = {
+            success: '#22c55e',
+            error: '#ef4444',
+            warning: '#f59e0b',
+            info: '#2563eb'
+        };
+
+        notification.style.cssText = `
+            background: ${colors[type] || colors.info};
+            color: white;
+            padding: 16px 20px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            animation: slideInRight 0.3s ease-out;
+            pointer-events: auto;
+            cursor: pointer;
+            min-width: 250px;
+            backdrop-filter: blur(10px);
+            font-family: 'Cairo', Arial, sans-serif;
+        `;
+
+        notification.innerHTML = `
+            <span style="font-size: 20px;">${icons[type]}</span>
+            <div style="flex: 1; font-weight: 500; font-size: 14px;">${message}</div>
+            <span style="cursor: pointer; opacity: 0.7; font-size: 18px; line-height: 1;">✕</span>
+        `;
+
+        notification.querySelector('span:last-child').onclick = () => {
+            this.removeNotification(notification);
+        };
+
+        this.container.appendChild(notification);
+
+        if (duration) {
+            setTimeout(() => {
+                this.removeNotification(notification);
+            }, duration);
+        }
+
+        return notification;
+    }
+
+    removeNotification(notification) {
+        notification.style.animation = 'slideOutRight 0.3s ease-out';
+        setTimeout(() => notification.remove(), 300);
+    }
+
+    success(message, duration = 3000) {
+        return this.show(message, 'success', duration);
+    }
+
+    error(message, duration = 5000) {
+        return this.show(message, 'error', duration);
+    }
+
+    warning(message, duration = 4000) {
+        return this.show(message, 'warning', duration);
+    }
+
+    info(message, duration = 3000) {
+        return this.show(message, 'info', duration);
+    }
+}
+
+const notificationSystem = new NotificationSystem();
+
+// دالة عامة للتوافق مع الكود القديم
+function showToast(message, type = 'info') {
+    if (type === 'success') notificationSystem.success(message);
+    else if (type === 'error') notificationSystem.error(message);
+    else if (type === 'warning') notificationSystem.warning(message);
+    else notificationSystem.info(message);
+}
+
+// إضافة الـ CSS animations
+const animationStyles = `
+<style>
+@keyframes slideInRight {
+    from {
+        transform: translateX(400px);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes slideOutRight {
+    from {
+        transform: translateX(0);
+        opacity: 1;
+    }
+    to {
+        transform: translateX(400px);
+        opacity: 0;
+    }
+}
+
+@media (max-width: 640px) {
+    #notification-system {
+        right: 10px !important;
+        left: 10px !important;
+        max-width: none !important;
+    }
+}
+</style>
+`;
+document.head.insertAdjacentHTML('beforeend', animationStyles);

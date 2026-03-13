@@ -29,7 +29,7 @@ function renderHero() {
     hero.className = 'hero';
     hero.innerHTML = `
         <div class="hero-text">
-            <h1>محتاج صنايعي شاطر؟ 🛠️</h1>
+            <h1>محتاج صنايعي شاطر؟ <i class="fa-solid fa-screwdriver-wrench"></i></h1>
             <h2>أفضل العروض لصيانة وإصلاح منزلك</h2>
             <p>بنربطك بأفضل الفنيين في منطقتك بضغطة زرار واحدة</p>
             <div class="hero-buttons">

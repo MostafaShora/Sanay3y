@@ -1,33 +1,38 @@
 /* ================= الأساسيات والمتغيرات ================= */
 :root {
     --primary: #2563eb;
-    --primary-gradient: linear-gradient(135deg, #5a0080, #009dff);
+    --primary-hover: #1d4ed8;
     --bg-main: #f8fafc;
     --bg-card: #ffffff;
-    --text-title: #0062ff;
-    --text-p: #64748b;
+    --bg-light: #f3f4f6;
+    --text-main: #0f172a;
+    --text-muted: #64748b;
     --text-features: #334155;
     --border-color: #e2e8f0;
-    --shadow: 0 10px 25px rgba(0,0,0,0.05);
+    --success: #22c55e;
+    --danger: #ef4444;
+    --shadow: 0 10px 25px rgba(0,0,0,0.08);
 }
 
 /* ألوان الوضع الليلي */
 body.dark-mode {
     --bg-main: #0f172a;
     --bg-card: #1e293b;
-    --text-title: #3b82f6;
-    --text-p: #94a3b8;
-    --text-features: #e2e8f0;
+    --bg-light: #334155;
+    --text-main: #f1f5f9;
+    --text-muted: #94a3b8;
+    --text-features: #cbd5e1;
     --border-color: #334155;
     --shadow: 0 10px 30px rgba(0,0,0,0.3);
 }
 
 body {
     background-color: var(--bg-main);
+    color: var(--text-main);
     font-family: 'Cairo', sans-serif;
     margin: 0;
     padding: 0;
-    transition: 0.3s ease;
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 /* ================= قسم الخطط ================= */
@@ -39,153 +44,238 @@ body {
 }
 
 .plans-title {
-    font-size: 40px;
-    font-weight: 700;
-    color: var(--text-title);
-    margin-bottom: 10px;
+    font-size: 44px;
+    font-weight: 800;
+    color: var(--text-main);
+    margin-bottom: 12px;
+    letter-spacing: -0.5px;
 }
 
 .plans-subtitle {
-    font-size: 20px; /* صغرنا الحجم شوية عشان التناسق */
-    color: var(--text-p);
-    margin-bottom: 50px;
+    font-size: 18px;
+    color: var(--text-muted);
+    margin-bottom: 60px;
+    font-weight: 400;
 }
 
 /* الحاوية */
 .plans-container {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); /* تجاوب ذكي */
-    gap: 25px;
-    justify-items: center;
+    grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+    gap: 32px;
+    margin-bottom: 60px;
 }
 
 /* ================= الكروت ================= */
 .plan-card {
     background: var(--bg-card);
-    border-radius: 24px;
-    padding: 30px 20px;
+    border-radius: 16px;
+    padding: 32px 24px;
     box-shadow: var(--shadow);
-    border: 1px solid var(--border-color);
+    border: 2px solid var(--border-color);
     width: 100%;
-    max-width: 280px;
     text-align: center;
-    transition: all 0.3s ease;
+    transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
     position: relative;
     display: flex;
     flex-direction: column;
+    overflow: hidden;
+}
+
+.plan-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--primary), transparent);
+    transform: translateX(-100%);
+    transition: transform 0.35s ease;
+}
+
+.plan-card:hover::before {
+    transform: translateX(0);
 }
 
 .plan-card:hover {
-    transform: translateY(-12px);
+    transform: translateY(-8px);
     box-shadow: 0 20px 40px rgba(0,0,0,0.12);
     border-color: var(--primary);
 }
 
 /* الكارت المتميز (Featured) */
 .plan-card.featured {
-    border: 2px solid var(--primary);
-    transform: scale(1.05);
+    border-color: var(--primary);
+    background: linear-gradient(135deg, var(--bg-card) 0%, rgba(37, 99, 235, 0.02) 100%);
+    transform: scale(1.04);
 }
+
 .plan-card.featured:hover {
-    transform: translateY(-12px) scale(1.05);
+    transform: translateY(-8px) scale(1.04);
+}
+
+.plan-card.featured::before {
+    background: linear-gradient(90deg, #fbbf24, var(--primary));
 }
 
 /* شارة الخصم */
 .discount-badge {
-    background: var(--primary-gradient);
-    color: white;
-    padding: 6px 15px;
-    border-radius: 30px;
+    background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%);
+    color: #78350f;
+    padding: 8px 16px;
+    border-radius: 24px;
     font-size: 13px;
-    font-weight: bold;
+    font-weight: 700;
     display: inline-block;
     margin: 0 auto 20px auto;
     width: fit-content;
+    box-shadow: 0 4px 12px rgba(251, 191, 36, 0.3);
 }
 
 .plan-name {
-    font-size: 18px;
+    font-size: 20px;
     font-weight: 700;
-    color: var(--text-title);
-    margin-bottom: 15px;
+    color: var(--text-main);
+    margin-bottom: 16px;
+    letter-spacing: -0.3px;
 }
 
 .plan-price {
-    font-size: 36px;
+    font-size: 40px;
     font-weight: 800;
     color: var(--primary);
+    margin: 16px 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
 }
 
 .plan-price span {
-    font-size: 14px;
-    font-weight: 400;
-    color: var(--text-p);
-    margin-right: 5px;
+    font-size: 16px;
+    font-weight: 500;
+    color: var(--text-muted);
 }
 
 .plan-duration {
     font-size: 14px;
-    color: var(--text-p);
+    color: var(--text-muted);
     border-bottom: 1px solid var(--border-color);
     padding-bottom: 20px;
-    margin-bottom: 20px;
+    margin-bottom: 24px;
+    font-weight: 500;
 }
 
 /* المميزات */
 .plan-features {
-    flex-grow: 1; /* عشان يخلي الزرار دايما تحت في مستوى واحد */
-    margin-bottom: 20px;
+    flex-grow: 1;
+    margin-bottom: 24px;
 }
 
 .plan-features p {
-    margin: 12px 0;
+    margin: 14px 0;
     font-size: 15px;
     color: var(--text-features);
     display: flex;
     align-items: center;
     gap: 10px;
     text-align: right;
+    line-height: 1.6;
 }
 
-.plan-features p::before {
-    content: "✓";
-    color: #22c55e; /* لون أخضر للصح */
-    font-weight: bold;
-    font-size: 16px;
+.plan-features p span {
+    color: var(--success);
+    font-weight: 700;
+    font-size: 18px;
+    flex-shrink: 0;
 }
 
 /* ================= الأزرار ================= */
 .plan-btn {
-    background: var(--primary-gradient);
+    background: var(--primary);
     color: white;
-    text-decoration: none;
-    padding: 12px 25px;
-    border-radius: 30px;
-    display: block;
-    font-weight: 600;
-    transition: 0.3s;
+    padding: 14px 28px;
+    border-radius: 10px;
     border: none;
+    font-weight: 600;
+    font-size: 16px;
     cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+}
+
+.plan-btn::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.3);
+    transform: translate(-50%, -50%);
+    transition: width 0.6s, height 0.6s;
+}
+
+.plan-btn:hover::before {
+    width: 300px;
+    height: 300px;
 }
 
 .plan-btn:hover {
-    transform: scale(1.05);
-    box-shadow: 0 5px 15px rgba(0, 157, 255, 0.4);
-    filter: brightness(1.1);
+    background: var(--primary-hover);
+    transform: translateY(-2px);
+    box-shadow: 0 12px 24px rgba(37, 99, 235, 0.35);
+}
+
+.plan-btn:active {
+    transform: translateY(0);
 }
 
 /* ================= التجاوب (Responsive) ================= */
 @media (max-width: 768px) {
     .plans-container {
         grid-template-columns: 1fr;
-        gap: 40px;
+        gap: 24px;
     }
     
     .plan-card {
-        max-width: 90%;
+        max-width: 100%;
     }
     
     .plan-card.featured {
         transform: scale(1);
+    }
+
+    .plan-card.featured:hover {
+        transform: translateY(-8px) scale(1);
+    }
+    
+    .plans-title {
+        font-size: 32px;
+    }
+    
+    .plans-subtitle {
+        font-size: 16px;
+    }
+}
+
+@media (max-width: 480px) {
+    .plans-section {
+        padding: 0 12px;
+    }
+    
+    .plans-title {
+        font-size: 28px;
+    }
+    
+    .plan-card {
+        padding: 24px 16px;
+    }
+    
+    .plan-price {
+        font-size: 32px;
     }
 }

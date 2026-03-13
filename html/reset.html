@@ -4,40 +4,129 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Reset Password</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <title>تحديث كلمة السر - صنايعي</title>
   <link rel="stylesheet" href="../css/form.css" />
+  <style>
+    .reset-stage {
+      display: none;
+    }
+    .reset-stage.active {
+      display: block;
+    }
+    .otp-timer {
+      text-align: center;
+      color: #f59e0b;
+      font-size: 14px;
+      margin: 10px 0;
+    }
+    .form-group small {
+      color: #ef4444;
+      font-size: 12px;
+      display: block;
+      margin-top: 5px;
+    }
+    .form-group small.success {
+      color: #10b981;
+    }
+  </style>
 </head>
 
 <body>
 
   <div id="navbar-container"></div>
 
-
   <form class="card" id="resetForm" method="post" action="../index.html">
-    <h1>Reset Password</h1>
-    <p class="subtitle">Enter your email to reset your password</p>
-    <div class="form-group">
-      <label for="resetEmail">Email</label>
-      <div class="input-box">
-        <input type="email" id="resetEmail" placeholder="Enter your email" required />
+    <h1>تحديث كلمة السر</h1>
+    <p class="subtitle">استعد الوصول إلى حسابك</p>
+
+    <!-- Stage 1: Email -->
+    <div id="stage1" class="reset-stage active">
+      <p style="text-align: center; color: #666; margin-bottom: 20px;">الخطوة 1 من 4: أدخل بريدك الإلكتروني</p>
+      
+      <div class="form-group">
+        <label for="resetEmail">البريد الإلكتروني <span style="color: #ef4444;">*</span></label>
+        <div class="input-box">
+          <input type="email" id="resetEmail" placeholder="بريدك الإلكتروني" />
+        </div>
+        <small id="emailResetError"></small>
       </div>
+
+      <button type="button" class="btn" id="sendOtpBtn">إرسال رمز التحقق</button>
     </div>
 
-    <div class="form-group">
-      <label for="otpInput">OTP Code</label>
-      <div class="input-box">
-        <input type="text" id="otpInput" placeholder="Enter OTP code" />
-        <button type="button" class="btnOTP" id="sendOtpBtn">Send OTP</button>
+    <!-- Stage 2: OTP Verification -->
+    <div id="stage2" class="reset-stage">
+      <p style="text-align: center; color: #666; margin-bottom: 20px;">الخطوة 2 من 4: تحقق من الرمز</p>
+      
+      <div class="form-group">
+        <label for="otpInput">رمز التحقق <span style="color: #ef4444;">*</span></label>
+        <div class="input-box">
+          <input 
+            type="text" 
+            id="otpInput" 
+            placeholder="أدخل رمز التحقق (6 أرقام)" 
+            maxlength="6" />
+        </div>
+        <div class="otp-timer">
+          ⏰ تنتهي صلاحية الرمز خلال: <span id="otpTimer">10:00</span>
+        </div>
+        <small id="otpError"></small>
       </div>
+
+      <button type="button" class="btn" id="verifyOtpBtn">التحقق من الرمز</button>
+      <p style="text-align: center; margin-top: 15px;">
+        <button type="button" class="btn" id="resendOtpBtn" style="background: #6b7280; padding: 8px 16px; font-size: 14px;">إعادة الإرسال</button>
+      </p>
     </div>
 
-    <button type="submit" class="btn">Reset</button>
+    <!-- Stage 3: New Password -->
+    <div id="stage3" class="reset-stage">
+      <p style="text-align: center; color: #666; margin-bottom: 20px;">الخطوة 3 من 4: أدخل كلمة السر الجديدة</p>
+      
+      <div class="form-group">
+        <label for="newPassword">كلمة السر الجديدة <span style="color: #ef4444;">*</span></label>
+        <div class="input-box">
+          <input 
+            type="password" 
+            id="newPassword" 
+            placeholder="كلمة قوية (6+ أحرف)" />
+        </div>
+        <small id="newPasswordError"></small>
+        <small id="passwordStrengthReset"></small>
+      </div>
 
-    <div class="footer-text">
-      Back to <a href="../html/sign-in.html">Sign in</a>
+      <div class="form-group">
+        <label for="confirmNewPassword">تأكيد كلمة السر الجديدة <span style="color: #ef4444;">*</span></label>
+        <div class="input-box">
+          <input 
+            type="password" 
+            id="confirmNewPassword" 
+            placeholder="أعد كتابة كلمة السر" />
+        </div>
+        <small id="confirmNewPasswordError"></small>
+      </div>
+
+      <button type="button" class="btn" id="resetPasswordBtn">تحديث كلمة السر</button>
+    </div>
+
+    <!-- Stage 4: Success -->
+    <div id="stage4" class="reset-stage">
+      <div style="text-align: center; padding: 30px 0;">
+        <div style="font-size: 60px; margin-bottom: 20px;"><i class="fa-solid fa-check"></i></div>
+        <h2>تم تحديث كلمة السر بنجاح!</h2>
+        <p style="color: #666; margin-top: 15px;">يمكنك الآن تسجيل الدخول باستخدام كلمة السر الجديدة</p>
+      </div>
+      <button type="button" class="btn" id="goToLoginBtn">العودة لتسجيل الدخول</button>
+    </div>
+
+    <div class="footer-text" style="margin-top: 20px;">
+      تذكرت كلمة السر؟
+      <a href="../html/sign-in.html">العودة لتسجيل الدخول</a>
     </div>
   </form>
 
+  <script src="../js/logic.js"></script>
   <script src="../js/shared.js"></script>
   <script src="../js/auth.js"></script>
 </body>

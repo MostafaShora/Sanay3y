@@ -11,6 +11,7 @@
     --success: #22c55e;
     --danger: #ef4444;
     --warning: #f59e0b;
+    --info: #3b82f6;
 }
 
 /* 2. دعم الدارك مود للوحة التحكم */
@@ -41,6 +42,7 @@ body.dark-mode {
     top: 70px;
     height: calc(100vh - 70px);
     transition: 0.3s;
+    overflow-y: auto;
 }
 
 .sidebar-item {
@@ -53,6 +55,7 @@ body.dark-mode {
     cursor: pointer;
     transition: 0.2s;
     color: #94a3b8;
+    position: relative;
 }
 
 .sidebar-item:hover {
@@ -66,6 +69,35 @@ body.dark-mode {
     font-weight: 600;
 }
 
+.sidebar-icon {
+    font-size: 1.3rem;
+}
+
+.sidebar-text {
+    flex: 1;
+}
+
+/* Badge للإشعارات */
+.badge-counter {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--danger);
+    color: white;
+    border-radius: 50%;
+    width: 24px;
+    height: 24px;
+    font-size: 0.7rem;
+    font-weight: bold;
+    margin-right: 8px;
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+}
+
 /* 5. المحتوى الأساسي (Main Content) */
 #main-content {
     flex: 1;
@@ -74,9 +106,50 @@ body.dark-mode {
     color: var(--text-main);
 }
 
+.page-header {
+    margin-bottom: 30px;
+}
+
 .page-title {
-    margin-bottom: 25px;
-    font-size: 1.8rem;
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 8px;
+}
+
+.page-subtitle {
+    color: var(--text-muted);
+    font-size: 0.95rem;
+    margin-top: 5px;
+}
+
+.header-stats {
+    display: flex;
+    gap: 15px;
+    margin-top: 15px;
+    flex-wrap: wrap;
+}
+
+.stat-badge {
+    background: var(--bg-card);
+    padding: 8px 16px;
+    border-radius: 6px;
+    font-size: 0.9rem;
+    border: 1px solid var(--border-color);
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.stat-badge.approved {
+    background: rgba(34, 197, 94, 0.1);
+    border-color: var(--success);
+    color: var(--success);
+}
+
+.stat-badge.pending {
+    background: rgba(245, 158, 11, 0.1);
+    border-color: var(--warning);
+    color: var(--warning);
 }
 
 /* 6. كروت الإحصائيات (Stats Cards) */
@@ -93,6 +166,17 @@ body.dark-mode {
     border-radius: 15px;
     box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
     border: 1px solid var(--border-color);
+    transition: 0.3s;
+}
+
+.stat-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+}
+
+.stat-icon {
+    font-size: 2rem;
+    margin-bottom: 10px;
 }
 
 .stat-card h3 {
@@ -102,9 +186,44 @@ body.dark-mode {
 }
 
 .stat-card p {
-    font-size: 1.5rem;
+    font-size: 1.8rem;
     font-weight: 700;
     color: var(--primary);
+    margin-bottom: 5px;
+}
+
+.stat-card p.warning {
+    color: var(--warning);
+}
+
+.stat-card small {
+    color: var(--text-muted);
+    font-size: 0.8rem;
+}
+
+/* Quick Actions */
+.quick-actions {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 15px;
+    margin-top: 30px;
+}
+
+.action-btn {
+    padding: 12px 20px;
+    background: var(--primary);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 0.9rem;
+    transition: 0.2s;
+}
+
+.action-btn:hover {
+    background: var(--primary-hover);
+    transform: translateY(-2px);
 }
 
 /* 7. الجداول (Admin Tables) */
@@ -139,8 +258,12 @@ body.dark-mode {
     background-color: rgba(0, 0, 0, 0.02);
 }
 
+.admin-table tbody tr:last-child td {
+    border-bottom: none;
+}
+
 /* 8. الأزرار (Buttons) */
-.btn-approve, .btn-suspend, .btn-delete {
+.btn-approve, .btn-suspend, .btn-delete, .btn-primary, .btn-secondary {
     padding: 6px 12px;
     border-radius: 6px;
     border: none;
@@ -151,48 +274,649 @@ body.dark-mode {
     margin: 2px;
 }
 
-.btn-approve { background: #dcfce7; color: #16a34a; }
-.btn-approve:hover { background: #16a34a; color: white; }
+.btn-approve, .btn-primary { 
+    background: #dcfce7; 
+    color: #16a34a; 
+}
 
-.btn-suspend { background: #fef3c7; color: #d97706; }
-.btn-suspend:hover { background: #d97706; color: white; }
+.btn-approve:hover, .btn-primary:hover { 
+    background: #16a34a; 
+    color: white; 
+}
 
-.btn-delete { background: #fee2e2; color: #ef4444; }
-.btn-delete:hover { background: #ef4444; color: white; }
+.btn-suspend { 
+    background: #fef3c7; 
+    color: #d97706; 
+}
+
+.btn-suspend:hover { 
+    background: #d97706; 
+    color: white; 
+}
+
+.btn-delete { 
+    background: #fee2e2; 
+    color: #ef4444; 
+}
+
+.btn-delete:hover { 
+    background: #ef4444; 
+    color: white; 
+}
+
+.btn-secondary {
+    background: #e2e8f0;
+    color: #64748b;
+}
+
+.btn-secondary:hover {
+    background: #cbd5e1;
+}
+
+/* Action Icons */
+.action-buttons {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.action-btn-icon {
+    width: 32px;
+    height: 32px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: 0.2s;
+}
+
+.action-btn-icon.edit {
+    background: rgba(59, 130, 246, 0.1);
+    color: #3b82f6;
+}
+
+.action-btn-icon.edit:hover {
+    background: #3b82f6;
+    color: white;
+}
+
+.action-btn-icon.approve {
+    background: rgba(34, 197, 94, 0.1);
+    color: #22c55e;
+}
+
+.action-btn-icon.approve:hover {
+    background: #22c55e;
+    color: white;
+}
+
+.action-btn-icon.suspend {
+    background: rgba(245, 158, 11, 0.1);
+    color: #f59e0b;
+}
+
+.action-btn-icon.suspend:hover {
+    background: #f59e0b;
+    color: white;
+}
+
+.action-btn-icon.delete {
+    background: rgba(239, 68, 68, 0.1);
+    color: #ef4444;
+}
+
+.action-btn-icon.delete:hover {
+    background: #ef4444;
+    color: white;
+}
 
 /* 9. شارات الحالة (Status Badges) */
 .status-badge {
-    padding: 4px 10px;
+    padding: 6px 12px;
     border-radius: 20px;
     font-size: 0.75rem;
     font-weight: bold;
+    display: inline-block;
 }
 
-.status-badge.active { background: #dcfce7; color: #16a34a; }
-.status-badge.pending { background: #fef3c7; color: #d97706; }
+.status-badge.active,
+.status-badge.approved { 
+    background: #dcfce7; 
+    color: #16a34a; 
+}
 
+.status-badge.pending { 
+    background: #fef3c7; 
+    color: #d97706; 
+}
 
+.status-badge.accepted {
+    background: #dbeafe;
+    color: #1d4ed8;
+}
+
+.status-badge.completed {
+    background: #dcfce7;
+    color: #16a34a;
+}
+
+.status-badge.rejected {
+    background: #fee2e2;
+    color: #dc2626;
+}
+
+/* Service Tag */
+.service-tag {
+    background: var(--bg-main);
+    padding: 4px 10px;
+    border-radius: 6px;
+    font-size: 0.85rem;
+    color: var(--text-main);
+}
+
+/* 10. الـ Inputs والـ Forms */
 .admin-input {
-    padding: 10px;
+    padding: 10px 12px;
     border: 1px solid var(--border-color);
     border-radius: 6px;
     background: var(--bg-main);
     color: var(--text-main);
     outline: none;
+    font-family: inherit;
+    transition: 0.2s;
 }
 
 .admin-input:focus {
     border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
 }
 
-/* 10. ريسبونسيف (Responsive) */
+.admin-input:disabled {
+    background: #f1f5f9;
+    cursor: not-allowed;
+    opacity: 0.6;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 6px;
+    font-weight: 600;
+    color: var(--text-main);
+    font-size: 0.9rem;
+}
+
+/* 11. الـ Modal */
+.admin-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 5000;
+    animation: fadeIn 0.3s ease-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.modal-backdrop {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    cursor: pointer;
+}
+
+.modal-content {
+    position: relative;
+    background: var(--bg-card);
+    border-radius: 12px;
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+    max-width: 500px;
+    width: 90%;
+    max-height: 90vh;
+    overflow-y: auto;
+    animation: slideUp 0.3s ease-out;
+}
+
+@keyframes slideUp {
+    from {
+        transform: translateY(30px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes slideOut {
+    to {
+        transform: translateY(30px);
+        opacity: 0;
+    }
+}
+
+.modal-header {
+    padding: 20px;
+    border-bottom: 1px solid var(--border-color);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.modal-header h2 {
+    margin: 0;
+    font-size: 1.3rem;
+}
+
+.modal-close {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: var(--text-muted);
+    padding: 0;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: 0.2s;
+}
+
+.modal-close:hover {
+    color: var(--text-main);
+}
+
+.modal-body {
+    padding: 20px;
+}
+
+.modal-footer {
+    padding: 20px;
+    border-top: 1px solid var(--border-color);
+    display: flex;
+    gap: 10px;
+    justify-content: flex-end;
+}
+
+.btn-modal {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: 0.2s;
+}
+
+.btn-modal.primary {
+    background: var(--primary);
+    color: white;
+}
+
+.btn-modal.primary:hover {
+    background: var(--primary-hover);
+}
+
+.btn-modal.secondary {
+    background: var(--border-color);
+    color: var(--text-main);
+}
+
+.btn-modal.secondary:hover {
+    background: #cbd5e1;
+}
+
+.btn-modal.danger {
+    background: var(--danger);
+    color: white;
+}
+
+.btn-modal.danger:hover {
+    background: #dc2626;
+}
+
+.confirmation-message {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: var(--text-main);
+}
+
+/* 12. Order Details */
+.order-details {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.detail-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 0;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.detail-row:last-child {
+    border-bottom: none;
+}
+
+.detail-row strong {
+    color: var(--text-muted);
+}
+
+.price {
+    color: var(--primary);
+    font-weight: 600;
+}
+
+.order-id {
+    background: var(--bg-main);
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-weight: 600;
+    font-family: monospace;
+}
+
+/* 13. Search Bar */
+.search-bar {
+    margin-bottom: 20px;
+}
+
+.search-bar .admin-input {
+    width: 100%;
+    max-width: 400px;
+}
+
+/* 14. Filter Tabs */
+.filter-tabs {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+    border-bottom: 2px solid var(--border-color);
+    overflow-x: auto;
+}
+
+.filter-tab {
+    padding: 12px 20px;
+    background: none;
+    border: none;
+    border-bottom: 3px solid transparent;
+    cursor: pointer;
+    font-weight: 600;
+    color: var(--text-muted);
+    transition: 0.2s;
+    white-space: nowrap;
+}
+
+.filter-tab:hover {
+    color: var(--text-main);
+}
+
+.filter-tab.active {
+    color: var(--primary);
+    border-bottom-color: var(--primary);
+}
+
+/* 15. Pagination */
+.pagination-controls {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 20px;
+    flex-wrap: wrap;
+}
+
+.pagination-btn {
+    padding: 8px 12px;
+    border: 1px solid var(--border-color);
+    background: var(--bg-card);
+    color: var(--text-main);
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: 0.2s;
+}
+
+.pagination-btn:hover:not(.disabled) {
+    background: var(--primary);
+    color: white;
+    border-color: var(--primary);
+}
+
+.pagination-btn.active {
+    background: var(--primary);
+    color: white;
+    border-color: var(--primary);
+}
+
+.pagination-btn.disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+/* 16. Activity Logs */
+.logs-timeline {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.log-item {
+    display: grid;
+    grid-template-columns: 80px 1fr 100px;
+    gap: 15px;
+    padding: 15px;
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    align-items: center;
+}
+
+.log-time {
+    font-weight: 600;
+    color: var(--primary);
+    font-family: monospace;
+    font-size: 0.85rem;
+}
+
+.log-content {
+    flex: 1;
+}
+
+.log-action {
+    display: flex;
+    gap: 8px;
+    align-items: baseline;
+}
+
+.log-action strong {
+    color: var(--text-main);
+}
+
+.log-admin {
+    background: var(--bg-main);
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    color: var(--text-muted);
+}
+
+.log-details {
+    margin: 5px 0 0 0;
+    color: var(--text-muted);
+    font-size: 0.9rem;
+}
+
+.log-date {
+    text-align: center;
+    color: var(--text-muted);
+    font-size: 0.85rem;
+}
+
+/* 17. Service Form Card */
+.service-form-card {
+    background: var(--bg-card);
+    padding: 20px;
+    border-radius: 10px;
+    border: 1px solid var(--border-color);
+    margin-bottom: 20px;
+}
+
+.service-form-card h3 {
+    margin-top: 0;
+    color: var(--text-main);
+}
+
+/* 18. Empty State */
+.empty-state {
+    text-align: center;
+    padding: 60px 20px;
+    background: var(--bg-card);
+    border-radius: 12px;
+    border: 2px dashed var(--border-color);
+}
+
+.empty-state p {
+    font-size: 1.2rem;
+    color: var(--text-muted);
+    margin: 0;
+}
+
+/* 19. Loading */
+.loading {
+    text-align: center;
+    padding: 40px 20px;
+    color: var(--text-muted);
+    font-size: 1.1rem;
+}
+
+/* 20. ريسبونسيف (Responsive) */
+@media (max-width: 1024px) {
+    #sidebar-container {
+        width: 220px;
+    }
+
+    #main-content {
+        padding: 20px;
+    }
+
+    .stats-grid {
+        grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+        gap: 15px;
+    }
+
+    .log-item {
+        grid-template-columns: 1fr;
+    }
+
+    .log-time, .log-date {
+        grid-column: auto;
+    }
+}
+
 @media (max-width: 768px) {
-    #admin-layout { flex-direction: column; }
+    #admin-layout {
+        flex-direction: column;
+    }
+
     #sidebar-container {
         width: 100%;
         height: auto;
         position: relative;
         top: 0;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+        padding: 10px;
+    }
+
+    .sidebar-item {
+        padding: 8px 10px;
+        font-size: 0.85rem;
+        margin-bottom: 5px;
+        flex-direction: column;
+        text-align: center;
+        gap: 5px;
+    }
+
+    #main-content {
+        padding: 15px;
+    }
+
+    .page-title {
+        font-size: 1.5rem;
+    }
+
+    .stats-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .action-buttons {
+        justify-content: flex-end;
+    }
+
+    .modal-content {
+        width: 95%;
+        max-width: 100%;
+    }
+
+    .log-item {
+        padding: 10px;
+    }
+
+    .admin-table {
+        font-size: 0.85rem;
+    }
+
+    .admin-table th,
+    .admin-table td {
+        padding: 10px;
+    }
+
+    .filter-tabs {
+        justify-content: flex-start;
+    }
+
+    .quick-actions {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 640px) {
+    #sidebar-container {
+        max-height: 200px;
+        overflow-x: auto;
+    }
+
+    .modal-footer {
+        flex-direction: column;
+    }
+
+    .btn-modal {
+        width: 100%;
+    }
+
+    .header-stats {
+        flex-direction: column;
+    }
+
+    .stat-badge {
+        width: 100%;
+        justify-content: space-between;
     }
 }
 

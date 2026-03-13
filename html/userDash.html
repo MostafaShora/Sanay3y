@@ -1,39 +1,25 @@
 <!DOCTYPE html>
-<html lang="ar">
+<html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>User Dashboard</title>
+    <title>لوحة التحكم - العميل</title>
     <link rel="stylesheet" href="../css/userDash.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
+    <div id="navbar-container"></div>
 
-<div id="navbar-container"></div>
+    <div id="app"></div>
 
-<button id="menuBtn">☰</button>
+    <div id="footer-container"></div>
 
-<div class="dashboard" dir="rtl"> <div class="sidebar" id="sidebar">
-        <div class="user-info-side">
-            <h2 id="sideUserName">لوحة تحكم المستخدم</h2>
-            <span class="user-role">عميل</span>
-        </div>
-        <button data-section="profile">👤 الملف الشخصي</button>
-        <button data-section="requests">🛠️ طلباتي</button>
-        <button data-section="reviews">⭐ التقييمات</button>
-    </div>
-
-    <div class="main" id="mainContent">
-        <div id="welcome-msg">
-            <h1>أهلاً بك 👋</h1>
-            <p>اختر من القائمة الجانبية لإدارة حسابك</p>
-        </div>
-    </div>
-</div>
-
-<div id="footer-container"></div>
-
-<script src="../js/shared.js"></script>
-<script src="../js/userDash.js"></script>
+    <script src="../js/logic.js"></script>
+    <script src="../js/shared.js"></script>
+    <script src="../js/userDash.js"></script>
 </body>
 </html>
 

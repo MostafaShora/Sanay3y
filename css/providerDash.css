@@ -230,9 +230,396 @@ body {
     background: var(--primary-hover);
 }
 
+/* ================= الأرباح (Earnings) ================= */
+.earnings-section {
+    background: var(--bg-card);
+    border-radius: 16px;
+    padding: 30px;
+    border: 1px solid var(--border-color);
+}
+
+.earnings-section h2 {
+    text-align: right;
+    color: var(--text-main);
+    margin-bottom: 25px;
+}
+
+.earnings-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 20px;
+    margin-bottom: 30px;
+}
+
+.earnings-card {
+    border-radius: 12px;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+    transition: all 0.3s ease;
+}
+
+.earnings-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2);
+}
+
+.earnings-section > div:last-child {
+    max-height: 400px;
+    overflow-y: auto;
+    background: var(--bg-light);
+    border-radius: 10px;
+    padding: 20px;
+}
+
+/* ================= الطلبات (Orders) ================= */
+.orders-section {
+    background: var(--bg-card);
+    border-radius: 16px;
+    padding: 30px;
+    border: 1px solid var(--border-color);
+}
+
+.orders-section h2 {
+    text-align: right;
+    color: var(--text-main);
+    margin-bottom: 25px;
+    font-size: 22px;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.orders-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    gap: 20px;
+}
+
+/* ================= بطاقة الطلب ================= */
+.order-card {
+    background: var(--bg-card);
+    border: 2px solid var(--border-color);
+    border-radius: 12px;
+    padding: 20px;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+}
+
+.order-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, var(--primary), transparent);
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform 0.3s ease;
+}
+
+.order-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.12);
+}
+
+.order-card:hover::before {
+    transform: scaleX(1);
+    transform-origin: left;
+}
+
+/* الطلبات المعلقة (Pending) */
+.order-card.pending {
+    border-left: 4px solid #fbbf24;
+    background: linear-gradient(135deg, var(--bg-card) 0%, rgba(251, 191, 36, 0.02) 100%);
+}
+
+.order-card.pending::before {
+    background: linear-gradient(90deg, #fbbf24, transparent);
+}
+
+/* الطلبات المقبولة (Accepted) */
+.order-card.accepted {
+    border-left: 4px solid var(--success);
+    background: linear-gradient(135deg, var(--bg-card) 0%, rgba(34, 197, 94, 0.02) 100%);
+}
+
+.order-card.accepted::before {
+    background: linear-gradient(90deg, var(--success), transparent);
+}
+
+/* الطلبات المرفوضة (Rejected) */
+.order-card.rejected {
+    border-left: 4px solid var(--danger);
+    background: linear-gradient(135deg, var(--bg-card) 0%, rgba(239, 68, 68, 0.02) 100%);
+    opacity: 0.85;
+}
+
+.order-card.rejected::before {
+    background: linear-gradient(90deg, var(--danger), transparent);
+}
+
+/* رأس الطلب */
+.order-header {
+    margin-bottom: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 10px;
+}
+
+.order-header h3 {
+    margin: 0;
+    color: var(--text-main);
+    font-size: 18px;
+    font-weight: 700;
+    flex: 1;
+    text-align: right;
+}
+
+.order-id {
+    background: var(--primary);
+    color: white;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+.order-card.pending .order-id {
+    background: #fbbf24;
+    color: #78350f;
+}
+
+.order-card.accepted .order-id {
+    background: var(--success);
+    color: white;
+}
+
+.order-card.rejected .order-id {
+    background: var(--danger);
+    color: white;
+}
+
+/* تفاصيل الطلب */
+.order-details {
+    flex: 1;
+    margin-bottom: 18px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.order-details p {
+    margin: 0;
+    font-size: 15px;
+    color: var(--text-muted);
+    text-align: right;
+    line-height: 1.6;
+    display: flex;
+    flex-direction: column;
+}
+
+.order-details strong {
+    color: var(--text-main);
+    font-weight: 600;
+}
+
+/* أزرار الطلب */
+.order-actions {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+}
+
+.order-actions button {
+    flex: 1;
+    min-width: 100px;
+    padding: 10px 16px;
+    border: none;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    position: relative;
+    overflow: hidden;
+}
+
+.order-actions button::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.3);
+    transform: translate(-50%, -50%);
+    transition: width 0.6s, height 0.6s;
+}
+
+.order-actions button:hover::before {
+    width: 300px;
+    height: 300px;
+}
+
+/* زر القبول */
+.btn-accept {
+    background: linear-gradient(135deg, var(--success), #16a34a);
+    color: white;
+    box-shadow: 0 4px 12px rgba(34, 197, 94, 0.3);
+}
+
+.btn-accept:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(34, 197, 94, 0.5);
+}
+
+.btn-accept:active {
+    transform: translateY(0);
+}
+
+/* زر الرفض */
+.btn-reject {
+    background: linear-gradient(135deg, #fca5a5, var(--danger));
+    color: #7f1d1d;
+    box-shadow: 0 4px 12px rgba(239, 68, 68, 0.2);
+    transition: all 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.btn-reject:hover {
+    background: linear-gradient(135deg, var(--danger), #dc2626);
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(239, 68, 68, 0.4);
+}
+
+.btn-reject:active {
+    transform: translateY(0);
+}
+
+/* زر الإنهاء */
+.btn-complete {
+    background: linear-gradient(135deg, #3b82f6, var(--primary));
+    color: white;
+    box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+}
+
+.btn-complete:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(37, 99, 235, 0.5);
+}
+
+.btn-complete:active {
+    transform: translateY(0);
+}
+
+/* زر الحذف */
+.btn-delete {
+    background: linear-gradient(135deg, #fca5a5, var(--danger));
+    color: #7f1d1d;
+    box-shadow: 0 4px 12px rgba(239, 68, 68, 0.2);
+}
+
+.btn-delete:hover {
+    background: linear-gradient(135deg, var(--danger), #dc2626);
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(239, 68, 68, 0.4);
+}
+
+.btn-delete:active {
+    transform: translateY(0);
+}
+
+/* الحالة الفارغة */
+.empty-state {
+    text-align: center;
+    padding: 60px 30px;
+    color: var(--text-muted);
+}
+
+.empty-state h2 {
+    font-size: 24px;
+    margin-bottom: 15px;
+    color: var(--text-main);
+}
+
+.empty-state p {
+    font-size: 16px;
+    margin: 0;
+}
+
+/* ================= الطلبات المرفوضة ================= */
+.order-card.rejected {
+    background: linear-gradient(135deg, rgba(239, 68, 68, 0.05) 0%, rgba(239, 68, 68, 0.02) 100%);
+    border: 1px dashed var(--danger);
+}
+
+/* ================= الرسوميات والـ Animations ================= */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideInCard {
+    from {
+        opacity: 0;
+        transform: translateX(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes pulse {
+    0%, 100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.7;
+    }
+}
+
+@keyframes shimmer {
+    0% {
+        background-position: -1000px 0;
+    }
+    100% {
+        background-position: 1000px 0;
+    }
+}
+
 /* ================= التجاوب (Responsive) ================= */
 @media (max-width: 1024px) {
     .side { width: 220px; }
+    .orders-list {
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    }
 }
 
 @media (max-width: 768px) {
@@ -250,9 +637,77 @@ body {
     .side ul { display: flex; gap: 10px; flex-wrap: wrap; justify-content: center; }
     .side li { margin-bottom: 0; padding: 8px 12px; font-size: 14px; }
     .main { padding: 20px; }
+    
+    .earnings-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .orders-list {
+        grid-template-columns: 1fr;
+    }
+
+    .profile-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .order-actions {
+        flex-direction: column;
+    }
+
+    .order-actions button {
+        min-width: auto;
+        width: 100%;
+    }
 }
 
 @media (max-width: 480px) {
     .profile-grid { grid-template-columns: 1fr; }
     .cards { grid-template-columns: 1fr; }
+    .main { padding: 15px; }
+
+    .orders-section {
+        padding: 15px;
+    }
+
+    .orders-section h2 {
+        font-size: 18px;
+    }
+
+    .order-card {
+        padding: 15px;
+    }
+
+    .order-header h3 {
+        font-size: 16px;
+    }
+
+    .order-details p {
+        font-size: 14px;
+    }
+
+    .order-id {
+        font-size: 11px;
+        padding: 3px 10px;
+    }
+
+    .order-actions {
+        gap: 8px;
+    }
+
+    .order-actions button {
+        padding: 9px 12px;
+        font-size: 13px;
+    }
+
+    .empty-state {
+        padding: 40px 15px;
+    }
+
+    .empty-state h2 {
+        font-size: 20px;
+    }
+
+    .empty-state p {
+        font-size: 14px;
+    }
 }

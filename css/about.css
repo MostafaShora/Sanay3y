@@ -65,8 +65,20 @@ body {
 .team-img-placeholder { width: 90px; height: 90px; background: var(--primary); border-radius: 50%; margin: 0 auto 25px; }
 
 /* ================= 5. Stats Bar ================= */
-.stats-bar { background: linear-gradient(to right, var(--primary), #1d4ed8); color: white; padding: 60px 8%; display: flex; justify-content: space-around; flex-wrap: wrap; gap: 40px; }
-.stat-item h3 { font-size: 2.8rem; margin-bottom: 8px; font-weight: 800; }
+.stats-bar { 
+    background: linear-gradient(135deg, var(--primary), #1d4ed8); 
+    color: white; 
+    padding: 80px 8%; 
+    text-align: center;
+}
+.stat-item { 
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.stat-item h3 { font-size: 2.8rem; margin: 10px 0; font-weight: 800; }
+.stat-item p { font-size: 1.1rem; opacity: 0.9; margin: 0; }
 
 /* ================= 6. إصلاح الفوتر (Footer Fix) ================= */
 footer {

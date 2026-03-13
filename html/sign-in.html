@@ -3,13 +3,33 @@
 
 <head>
   <meta charset="UTF-8" />
-  <title>Sign In</title>
+  <title>سجل الدخول - صنايعي</title>
   <link rel="stylesheet" href="../css/form.css" />
 
   <!-- Font Awesome CDN -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
     integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
     crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <style>
+    .form-group small {
+      color: #ef4444;
+      font-size: 12px;
+      display: block;
+      margin-top: 5px;
+    }
+    .demo-info {
+      background: #dbeafe;
+      border-left: 4px solid #3b82f6;
+      padding: 10px 15px;
+      border-radius: 6px;
+      margin-bottom: 20px;
+      font-size: 13px;
+    }
+    body.dark .demo-info {
+      background: #1e3a8a;
+      color: #bfdbfe;
+    }
+  </style>
 </head>
 
 <body>
@@ -17,49 +37,54 @@
   <div id="navbar-container"></div>
 
   <form class="card" id="loginForm" method="post" action="../index.html">
-    <h1>Sign In</h1>
-    <p class="subtitle">Welcome back! Please login to your account</p>
+    <h1>سجل الدخول</h1>
+    <p class="subtitle">مرحباً بعودتك! سجل دخول لحسابك</p>
+
+    <div class="demo-info">
+      <i class="fas fa-info-circle"></i> 
+      <strong>حساب تجريبي:</strong> test@email.com / password123
+    </div>
 
     <!-- Email -->
     <div class="form-group">
-      <label for="loginEmail">Email</label>
+      <label for="loginEmail">البريد الإلكتروني <span style="color: #ef4444;">*</span></label>
       <div class="input-box">
         <input
           type="email"
           id="loginEmail"
-          placeholder="Enter your email"
-          required
-          pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
-          title="Please enter a valid email" />
+          placeholder="بريدك الإلكتروني"
+          required />
       </div>
+      <small id="emailLoginError"></small>
     </div>
 
     <!-- Password -->
     <div class="form-group">
-      <label for="loginPassword">Password</label>
+      <label for="loginPassword">كلمة السر <span style="color: #ef4444;">*</span></label>
       <div class="input-box">
         <input
           type="password"
           id="loginPassword"
-          placeholder="••••••••"
-          required
-          title="Password must contain at least 8 characters, one uppercase letter, one lowercase letter, and one number" />
+          placeholder="كلمة السر"
+          required />
       </div>
+      <small id="passwordLoginError"></small>
     </div>
 
     <!-- Forgot password -->
     <div class="forgot">
-      <a href="../html/reset.html">Forgot Password?</a>
+      <a href="../html/reset.html">🔐 هل نسيت كلمة السر؟</a>
     </div>
 
-    <button type="submit" class="btn">Sign In</button>
+    <button type="submit" class="btn">سجل الدخول</button>
 
     <div class="footer-text">
-      Don't have an account?
-      <a href="../html/sign-up.html">Sign Up</a>
+      ليس لديك حساب؟
+      <a href="../html/sign-up.html">انشئ حساب</a>
     </div>
   </form>
 
+  <script src="../js/logic.js"></script>
   <script src="../js/shared.js"></script>
   <script src="../js/auth.js"></script>
 </body>
